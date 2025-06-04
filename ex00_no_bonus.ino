@@ -1,7 +1,7 @@
 const int buttonPin = 2;
-const int ledOne = 13;
-const int ledTwo = 12;
-const int ledThree = 8;
+const int ledRed = 13;
+const int ledYellow = 12;
+const int ledGreen = 8;
 const unsigned long blinkInterval = 500;
 
 int		buttonState = HIGH; //default is 1
@@ -14,19 +14,19 @@ unsigned long previousMillis = 0;
 void setup()
 {
   pinMode(buttonPin,INPUT_PULLUP);
-  pinMode(ledOne, OUTPUT);
-  pinMode(ledTwo, OUTPUT);
-  pinMode(ledThree, OUTPUT);
+  pinMode(ledRed, OUTPUT);
+  pinMode(ledYellow, OUTPUT);
+  pinMode(ledGreen, OUTPUT);
 
   Serial.begin(9600);
 
-  digitalWrite(ledThree, ledStateGreen);
+  digitalWrite(ledGreen, ledStateGreen);
 }
 
 void toggleGreenLed()
 {
   ledStateGreen = !ledStateGreen;
-  digitalWrite(ledThree, ledStateGreen);
+  digitalWrite(ledGreen, ledStateGreen);
   Serial.print("Green LED is now ");
   Serial.println(ledStateGreen ? "ON" : "OFF");
 
@@ -51,8 +51,8 @@ void handle_BlinkingLeds()
 {
   if (!blinking)
   {
-    digitalWrite(ledOne, LOW);
-    digitalWrite(ledTwo, LOW);
+    digitalWrite(ledRed, LOW);
+    digitalWrite(ledYellow, LOW);
     return;
   }
   unsigned long currentMillis = millis();
@@ -60,8 +60,8 @@ void handle_BlinkingLeds()
     {
       previousMillis = currentMillis;
       currentBlinkLedState = !currentBlinkLedState;
-      digitalWrite(ledOne, currentBlinkLedState ? HIGH : LOW);
-      digitalWrite(ledTwo, currentBlinkLedState ? HIGH : LOW);
+      digitalWrite(ledRed, currentBlinkLedState ? HIGH : LOW);
+      digitalWrite(ledYellow, currentBlinkLedState ? HIGH : LOW);
     }
 }
 void loop()
