@@ -7,7 +7,7 @@ const int lightSensorL = A2;
 int sensorValueM = 0;
 int sensorValueL = 0;
 int sensorValueR = 0;
-int tresh = 50;
+int tresh = 100;
 
 void setup()
 {
@@ -40,13 +40,13 @@ void loop()
 
     if(L > M && L > R)
       ServoMain.write(180);
-    /if(averageLM + tresh > M && averageLM + tresh > averageRM && averageLM + tresh > R && averageLM + tresh > averageLR && averageLM + tresh > L)
+    if(averageLM + tresh > M && averageLM + tresh > averageRM && averageLM + tresh > R && averageLM + tresh > averageLR && averageLM + tresh > L)
       ServoMain.write(135);
     if( M > averageRM && M > R  && M > averageLR && M > L && M > averageLM)
       ServoMain.write(90);
-    if(averageRM + tresh > R && averageRM + tresh > averageRL && averageRM + tresh > L && averageRM + tresh > LM && averageRM + tresh > M)
-      ServoMain.wriite(45);
-    if(R > averageRL && R > L && R > averageLM && R > M & R > averageRM)
+    if(averageRM + tresh > R && averageRM + tresh > averageLR && averageRM + tresh > L && averageRM + tresh > averageLM && averageRM + tresh > M)
+      ServoMain.write(45);
+    if(R > averageLR && R > L && R > averageLM && R > M & R > averageRM)
       ServoMain.write(0);
       //servo 0
 
