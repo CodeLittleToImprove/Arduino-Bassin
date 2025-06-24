@@ -31,7 +31,6 @@ void loop() {
   // Find the maximum light value
   int maxValue = max(sensorValueL, max(sensorValueM, sensorValueR));
 
-  // Move the servo based on which direction has most light
   if (maxValue - sensorValueM < tresh && maxValue == sensorValueM) {
     ServoMain.write(90);  // Face south
   } else if (maxValue - sensorValueL < tresh && maxValue == sensorValueL) {
